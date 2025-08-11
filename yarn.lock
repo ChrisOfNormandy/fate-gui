@@ -2243,24 +2243,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react-hooks@npm:^5.2.0":
-  version: 5.2.0
-  resolution: "eslint-plugin-react-hooks@npm:5.2.0"
-  peerDependencies:
-    eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
-  checksum: 10c0/1c8d50fa5984c6dea32470651807d2922cc3934cf3425e78f84a24c2dfd972e7f019bee84aefb27e0cf2c13fea0ac1d4473267727408feeb1c56333ca1489385
-  languageName: node
-  linkType: hard
-
-"eslint-plugin-react-refresh@npm:^0.4.20":
-  version: 0.4.20
-  resolution: "eslint-plugin-react-refresh@npm:0.4.20"
-  peerDependencies:
-    eslint: ">=8.40"
-  checksum: 10c0/2ccf4ba28f1dcbcb9e773e46eae1e61e568bba69281a700eb26fd762152e4e90a78c991f9c8173342a7cd2a82f3f52fedb40a1e81360cef9c40ea5b814fa3613
-  languageName: node
-  linkType: hard
-
 "eslint-plugin-react@npm:^7.37.5":
   version: 7.37.5
   resolution: "eslint-plugin-react@npm:7.37.5"
@@ -2469,15 +2451,11 @@ __metadata:
     "@types/react-dom": "npm:^19.1.7"
     "@vitejs/plugin-react": "npm:^4.7.0"
     eslint: "npm:^9.32.0"
-    eslint-plugin-react-hooks: "npm:^5.2.0"
-    eslint-plugin-react-refresh: "npm:^0.4.20"
-    globals: "npm:^16.3.0"
     knip: "npm:^5.62.0"
     react: "npm:^19.1.1"
     react-dom: "npm:^19.1.1"
     sass: "npm:^1.90.0"
     typescript: "npm:~5.8.3"
-    typescript-eslint: "npm:^8.39.0"
     vite: "npm:^7.1.0"
     vite-tsconfig-paths: "npm:^5.1.4"
   languageName: unknown
@@ -2722,7 +2700,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globals@npm:^16.1.0, globals@npm:^16.3.0":
+"globals@npm:^16.1.0":
   version: 16.3.0
   resolution: "globals@npm:16.3.0"
   checksum: 10c0/c62dc20357d1c0bf2be4545d6c4141265d1a229bf1c3294955efb5b5ef611145391895e3f2729f8603809e81b30b516c33e6c2597573844449978606aad6eb38
@@ -4678,7 +4656,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript-eslint@npm:^8.32.1, typescript-eslint@npm:^8.39.0":
+"typescript-eslint@npm:^8.32.1":
   version: 8.39.0
   resolution: "typescript-eslint@npm:8.39.0"
   dependencies:
