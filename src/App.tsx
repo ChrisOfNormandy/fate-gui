@@ -1,9 +1,9 @@
-import { Button, Glyph } from '@syren-dev-tech/confects/buttons';
 import './styles/app.scss';
-import { Page } from '@syren-dev-tech/confects/containers';
-import { getClassName, uniqueKey } from '@syren-dev-tech/confects/helpers';
+import { Button, Glyph } from '@syren-dev-tech/confects/buttons';
 import { Input } from '@syren-dev-tech/confects/inputs';
+import { Page } from '@syren-dev-tech/confects/containers';
 import { themes } from '@syren-dev-tech/confetti/themes';
+import { uniqueKey } from '@syren-dev-tech/confects/helpers';
 import { useActionState, useEffect, useRef, useState } from 'react';
 
 interface SpinnerItem {
@@ -12,9 +12,18 @@ interface SpinnerItem {
     weight: number
 }
 
+const DEGS = 360; // Full circle in degrees
+const PERC = 100; // Percentage for conic-gradient
+const INIT_DECAY = 0.01; // Initial decay for spin animation
+const MIN_SPIN_SPEED = 5; // Minimum spin speed
+const SPINUP_DECAY = 1.05; // Spin up decay factor
+const SPINDOWN_DECAY = 0.991; // Spin down decay factor
+const REVERSE_TARGET = 0.5; // Reverse target for spin animation
+const ROT_OFFSET = 90; // Offset for initial rotation
+
 // Get color from an index plus string
 function getColor(index: number, n: number) {
-    const colorIndex = (index * (360 / n)) % 360; // Ensure it's within 0-359
+    const colorIndex = (index * (DEGS / n)) % DEGS; // Ensure it's within 0-359
     return `hsl(${colorIndex}, 100%, 50%)`; // HSL color for better visibility
 }
 
@@ -110,15 +119,17 @@ export default function App() {
     );
 
     const gradient = spinnerItems.map((_, i) => {
-        return `${getColor(i, spinnerItems.length)} ${100 * i / spinnerItems.length}% ${100 * (i + 1) / spinnerItems.length}%`;
+        return `${getColor(i, spinnerItems.length)} ${PERC * i / spinnerItems.length}% ${PERC * (i + 1) / spinnerItems.length}%`;
     });
 
+    // eslint-disable-next-line no-magic-numbers
     const bgRotation = 2 * Math.PI;
     const dRot = bgRotation / spinnerItems.length;
     /*
      * 0% = offset of Math.PI / 2
      * So each slice would be offset by that plus the change in rotation to the next slice, plus half to center it
      */
+    // eslint-disable-next-line no-magic-numbers
     const bgRotationOffset = Math.PI / 2 - dRot + dRot / 2;
 
     return <Page className={themes.getBasicStyling('body')}>
@@ -176,36 +187,36 @@ export default function App() {
                         let rotation = Number(spinnerRef.current?.style.transform.match(/rotate\((?<rotation>[-\d.]+)deg\)/)?.groups?.rotation);
                         if (isNaN(rotation)) rotation = 0;
 
-                        let decay = 0.01;
-                        const ds = Math.random() * SPIN_dROT + 5;
+                        let decay = INIT_DECAY;
+                        const ds = Math.random() * SPIN_dROT + MIN_SPIN_SPEED;
 
                         let spinup = true;
 
                         const animateSpin = () => {
                             requestAnimationFrame(animateSpin);
 
-                            if (!spinnerRef.current || !spinup && decay <= 0.01)
+                            if (!spinnerRef.current || !spinup && decay <= INIT_DECAY)
                                 return;
 
                             if (spinup) {
                                 if (decay <= ds)
-                                    decay *= 1.05;
+                                    decay *= SPINUP_DECAY;
                                 else
                                     spinup = false;
 
-                                rotation = (rotation + 5 * decay) % 360;
+                                rotation = (rotation + MIN_SPIN_SPEED * decay) % DEGS;
                             }
                             else {
-                                rotation = (rotation + ds * decay) % 360;
-                                decay *= 0.991;
+                                rotation = (rotation + ds * decay) % DEGS;
+                                decay *= SPINDOWN_DECAY;
                             }
 
                             spinnerRef.current.style.transform = `rotate(${rotation}deg)`;
 
-                            if (!spinup && decay < 0.5) {
-                                const degPerItem = 360 / spinnerItems.length;
-                                let trueRot = (rotation - 90) % 360; // Adjust for the initial offset of 90 degrees
-                                if (trueRot < 0) trueRot += 360; // Ensure positive rotation
+                            if (!spinup && decay < REVERSE_TARGET) {
+                                const degPerItem = DEGS / spinnerItems.length;
+                                let trueRot = (rotation - ROT_OFFSET) % DEGS; // Adjust for the initial offset of 90 degrees
+                                if (trueRot < 0) trueRot += DEGS; // Ensure positive rotation
                                 const modDeg = trueRot - (trueRot % degPerItem);
                                 const index = Math.floor(modDeg / degPerItem);
                                 const selected = spinnerItems[spinnerItems.length - 1 - index];
@@ -236,7 +247,13 @@ export default function App() {
                         name='item_label'
                         required
                         placeholder='New Item'
-                        theme={{ background: { style: 'content' }, border: { style: 'content', mono: -1 } }}
+                        theme={{
+                            background: { style: 'content' },
+                            border: {
+                                mono: -1,
+                                style: 'content'
+                            }
+                        }}
                     />
 
                     <Glyph
