@@ -1,0 +1,5 @@
+@use '~themes' as themes;
+@use '@syren-dev-tech/confetti/main.scss';
+@use '@syren-dev-tech/confects/style.css';
+
+@include themes.themeify('india');

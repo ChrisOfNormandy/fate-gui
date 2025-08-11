@@ -1,0 +1,95 @@
+@use '~layout' as layout;
+@use '~styling' as styling;
+
+.page {
+    @include layout.flex-center(true, true);
+    @include layout.fullsize;
+
+    .spinner-container {
+        @include layout.flex-center(true, true);
+        @include layout.wide;
+
+        position: relative;
+        padding: 20px;
+
+        .spinner {
+            @include styling.rounded(50%);
+
+            background-color: black;
+            width: 50%;
+            padding-bottom: 50%;
+            position: relative;
+
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            .spinner-item {
+                @include layout.flex-center(true);
+
+                position: absolute;
+                left: 50%;
+                top: 50%;
+
+                // Rotate around the center based on child index
+                transform-origin: 0 0;
+                width: 50%;
+            }
+        }
+
+        .pointer {
+            @include layout.flex(true);
+
+            position: absolute;
+            top: 50%;
+            left: 75%;
+            transform: translate(0, -50%);
+
+            .marker {
+                background-color: black;
+                width: 10px;
+                height: 10px;
+            }
+
+            span {
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .spinner-controls {
+        @include layout.flex-center(true, true);
+
+        margin-top: 20px;
+        overflow: hidden;
+
+        .spinner-form {
+            @include layout.flex-between(true);
+
+            padding: 20px;
+
+            .glyph {
+                margin-left: 10px;
+            }
+        }
+
+        .spin-btn {
+            @include layout.wide;
+            margin-top: 10px;
+        }
+
+        .items-list {
+            @include layout.wide;
+
+            overflow: auto;
+            margin: 10px 0;
+
+            .spinner-list-item {
+                @include layout.flex-between(true);
+                @include layout.wide(40px);
+
+                padding: 5px 20px
+            }
+        }
+    }
+}
