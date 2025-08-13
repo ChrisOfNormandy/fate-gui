@@ -1827,6 +1827,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cookie@npm:^1.0.1":
+  version: 1.0.2
+  resolution: "cookie@npm:1.0.2"
+  checksum: 10c0/fd25fe79e8fbcfcaf6aa61cd081c55d144eeeba755206c058682257cb38c4bd6795c6620de3f064c740695bb65b7949ebb1db7a95e4636efb8357a335ad3f54b
+  languageName: node
+  linkType: hard
+
 "cross-spawn@npm:^7.0.6":
   version: 7.0.6
   resolution: "cross-spawn@npm:7.0.6"
@@ -2454,6 +2461,7 @@ __metadata:
     knip: "npm:^5.62.0"
     react: "npm:^19.1.1"
     react-dom: "npm:^19.1.1"
+    react-router-dom: "npm:^7.8.0"
     sass: "npm:^1.90.0"
     typescript: "npm:~5.8.3"
     vite: "npm:^7.1.0"
@@ -3945,6 +3953,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-router-dom@npm:^7.8.0":
+  version: 7.8.0
+  resolution: "react-router-dom@npm:7.8.0"
+  dependencies:
+    react-router: "npm:7.8.0"
+  peerDependencies:
+    react: ">=18"
+    react-dom: ">=18"
+  checksum: 10c0/a39a65477249f306935d48c010afd3f34009be66993df02dfa8a13cb79e0f3d61940e4ea0b7dadadb64b9b1f303358a830ed62c08d05cb406196aee6d609bdaf
+  languageName: node
+  linkType: hard
+
+"react-router@npm:7.8.0":
+  version: 7.8.0
+  resolution: "react-router@npm:7.8.0"
+  dependencies:
+    cookie: "npm:^1.0.1"
+    set-cookie-parser: "npm:^2.6.0"
+  peerDependencies:
+    react: ">=18"
+    react-dom: ">=18"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+  checksum: 10c0/e2d81a1d673ed5d0851810defc19b7db9d8350e31169e1938efe8392b0b995f4faf7b4c9416c257935e2f28c65297a412a053b39e68ac76095130808c5b24db1
+  languageName: node
+  linkType: hard
+
 "react-tooltip@npm:^5.28.1":
   version: 5.29.1
   resolution: "react-tooltip@npm:5.29.1"
@@ -4213,6 +4249,13 @@ __metadata:
   bin:
     semver: bin/semver.js
   checksum: 10c0/aca305edfbf2383c22571cb7714f48cadc7ac95371b4b52362fb8eeffdfbc0de0669368b82b2b15978f8848f01d7114da65697e56cd8c37b0dab8c58e543f9ea
+  languageName: node
+  linkType: hard
+
+"set-cookie-parser@npm:^2.6.0":
+  version: 2.7.1
+  resolution: "set-cookie-parser@npm:2.7.1"
+  checksum: 10c0/060c198c4c92547ac15988256f445eae523f57f2ceefeccf52d30d75dedf6bff22b9c26f756bd44e8e560d44ff4ab2130b178bd2e52ef5571bf7be3bd7632d9a
   languageName: node
   linkType: hard
 

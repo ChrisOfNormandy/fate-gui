@@ -1,0 +1,37 @@
+@use '~layout' as layout;
+@use '~styling' as styling;
+
+.list-item {
+    @include layout.flex-between(true);
+    @include layout.wide(40px);
+    @include styling.rounded;
+
+    padding: 5px 20px;
+
+    &.selected {
+        border: 5px solid;
+        @include layout.wide(50px);
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 10px;
+    }
+
+    .list-item-form {
+        @include layout.flex-between(true);
+
+        margin-right: 10px;
+
+        .input {
+            margin-right: 10px;
+
+            &[type='number'] {
+                width: 50px;
+            }
+
+            &:not([type='number']) {
+                width: 100%
+            }
+        }
+    }
+}

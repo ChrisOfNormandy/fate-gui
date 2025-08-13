@@ -1,0 +1,9 @@
+@use '~layout' as layout;
+@use '~styling' as styling;
+
+.items-list {
+    @include layout.wide;
+
+    overflow: auto;
+    margin-top: 10px;
+}

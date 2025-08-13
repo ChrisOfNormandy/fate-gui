@@ -1,0 +1,12 @@
+@use '~layout' as layout;
+@use '~styling' as styling;
+
+.item-entry-form {
+    @include layout.flex-between(true);
+
+    margin-top: 10px;
+
+    .input {
+        margin-right: 10px;
+    }
+}

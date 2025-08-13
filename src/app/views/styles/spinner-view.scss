@@ -1,18 +1,18 @@
 @use '~layout' as layout;
 @use '~styling' as styling;
 
-.page {
+.spinner-container {
     @include layout.flex-center(true, true);
-    @include layout.fullsize;
+    @include layout.wide;
 
-    .spinner-container {
+    .spinner {
         @include layout.flex-center(true, true);
         @include layout.wide;
 
         position: relative;
-        padding: 20px;
+        max-width: 900px;
 
-        .spinner {
+        .spinner-wheel {
             @include styling.rounded(50%);
 
             background-color: black;
@@ -25,7 +25,7 @@
             background-position: center;
 
             .spinner-item {
-                @include layout.flex-center(true);
+                @include layout.flex-center(true, true);
 
                 position: absolute;
                 left: 50%;
@@ -43,12 +43,13 @@
             position: absolute;
             top: 50%;
             left: 75%;
-            transform: translate(0, -50%);
+            transform: translate(-5px, -50%);
 
             .marker {
                 background-color: black;
                 width: 10px;
                 height: 10px;
+                rotate: 45deg;
             }
 
             span {
@@ -57,39 +58,9 @@
         }
     }
 
-    .spinner-controls {
-        @include layout.flex-center(true, true);
-
-        margin-top: 20px;
-        overflow: hidden;
-
-        .spinner-form {
-            @include layout.flex-between(true);
-
-            padding: 20px;
-
-            .glyph {
-                margin-left: 10px;
-            }
-        }
-
-        .spin-btn {
-            @include layout.wide;
-            margin-top: 10px;
-        }
-
-        .items-list {
-            @include layout.wide;
-
-            overflow: auto;
-            margin: 10px 0;
-
-            .spinner-list-item {
-                @include layout.flex-between(true);
-                @include layout.wide(40px);
-
-                padding: 5px 20px
-            }
-        }
+    .spin-btn {
+        margin-top: 10px;
+        font-size: 20px;
+        padding: 10px 20px;
     }
 }

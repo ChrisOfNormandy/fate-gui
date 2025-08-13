@@ -1,0 +1,16 @@
+@use '~layout' as layout;
+@use '~styling' as styling;
+
+.page {
+    @include layout.flex-center(true, true);
+    @include layout.fullsize(20px, 20px);
+
+    padding: 10px;
+
+    .controls-container {
+        @include layout.flex-center(true, true);
+        @include layout.wide;
+
+        overflow: hidden;
+    }
+}
