@@ -8,7 +8,9 @@ import Template from './app/views/Template';
 export default function App() {
     useEffect(() => { themes.init('dark', 'india'); }, []);
 
-    return <BrowserRouter>
+    return <BrowserRouter
+        basename='/fate-gui'
+    >
         <Routes>
             <Route path='/' element={
                 <SpinnerContextProvider>

@@ -13,7 +13,7 @@ export default ({ mode }: UserConfig) => {
     const { DEV } = process.env;
 
     return defineConfig({
-        base: DEV ? '/' : '/fate-gui/',
+        base: '/fate-gui/',
         esbuild: {
             drop: !DEV && ['console', 'debugger'] || undefined,
             legalComments: 'none'
